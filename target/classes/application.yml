@@ -1,0 +1,61 @@
+server:
+  port: 8080
+  
+# actuator
+management: 
+  server: 
+    address: 127.0.0.1
+    port: 9090
+  security: 
+    enabled: true
+  endpoints: 
+    mappings: 
+      sensitive: false
+    web: 
+      exposure: 
+        include: '*'
+    shutdown: 
+      enabled: true
+
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    #virtual-host: /
+    # 支持发布确认
+    #publisher-confirms: true
+    # 支持发布返回
+    #publisher-returns: true
+    listener: 
+      simple:
+        # 应答模式 {none,auto,manual}
+        acknowledgeMode: auto
+        # 当前监听容器数
+        concurrency: 1
+        # 最大数
+        max-concurrency: 1
+        # 是否支持重试
+        retry:
+          enabled: true
+          
+# 日志
+logging: 
+  level: 
+    com.huawei.hicloud: debug
+
+info:
+  aaa:
+    name: xxx
+    email: xxx@qq.com
+  bbb:
+    age: 25
+    hobbies: running
+  build:
+    artifact: "spring-boot-rabbitMq"
+    name: "spring-boot-rabbitMq"
+    version: "0.0.1-SNAPSHOT"
+    
+
+  
